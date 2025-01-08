@@ -21,35 +21,35 @@ class BoxTest {
     }
 
     @Test
-    void isThisTypeVertexThreeUnknown(){
+    void isThisTypeVertexThreeUnknown() {
         Box box = new Box(3, 3);
         String result = box.whatsThis();
         assertThat(result).isEqualTo("Unknown object");
     }
 
     @Test
-    void isVertexIsTwo(){
+    void isVertexIsTwo() {
         Box box = new Box(4, 10);
         int resul = box.getNumberOfVertices();
         assertThat(resul).isEqualTo(4);
     }
 
     @Test
-    void isVertexIsTen(){
+    void isVertexIsTen() {
         Box box = new Box(10, 10);
         int resul = box.getNumberOfVertices();
         assertThat(resul).isEqualTo(-1);
     }
 
     @Test
-    void isEdgeIsNotPositive(){
+    void isEdgeIsNotPositive() {
         Box box = new Box(10, -10);
         int resul = box.getNumberOfVertices();
         assertThat(resul).isEqualTo(-1);
     }
 
     @Test
-    void isThisAreaCube(){
+    void isThisAreaCube() {
         Box box = new Box(8, 3);
         double result = box.getArea();
         double excepted = 54.0;
@@ -58,7 +58,7 @@ class BoxTest {
     }
 
     @Test
-    void isThisAreaSphere(){
+    void isThisAreaSphere() {
         Box box = new Box(0, 3);
         double result = box.getArea();
         assertThat(result).isCloseTo(113.097, withinPercentage(0.005));
@@ -66,14 +66,14 @@ class BoxTest {
     }
 
     @Test
-    void isExistIsFalse(){
+    void isExistIsFalse() {
         Box box = new Box(10, 3);
         boolean result = box.isExist();
         assertThat(result).isFalse();
     }
 
     @Test
-    void isExistIsTrue(){
+    void isExistIsTrue() {
         Box box = new Box(4, 3);
         boolean result = box.isExist();
         assertThat(result).isTrue();
