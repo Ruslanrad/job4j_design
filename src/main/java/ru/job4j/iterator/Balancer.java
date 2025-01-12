@@ -10,7 +10,7 @@ public class Balancer {
         while (source.hasNext()) {
             if (index < nodes.size()) {
                 nodes.get(index++).add(source.next());
-            }else {
+            } else {
                 index = 0;
             }
         }
