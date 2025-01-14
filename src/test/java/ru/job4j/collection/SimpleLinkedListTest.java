@@ -4,7 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 class SimpleLinkedListTest {
 
@@ -22,12 +25,6 @@ class SimpleLinkedListTest {
         assertThat(list).hasSize(2);
         list.add(3);
         list.add(4);
-        list.iterator().next();
-        System.out.println(list.iterator().next());
-        System.out.println(list.iterator().next());
-        System.out.println(list.iterator().next());
-        System.out.println(list.iterator().next());
-        System.out.println(list.iterator().next());
         assertThat(list).hasSize(4);
     }
 
@@ -94,5 +91,27 @@ class SimpleLinkedListTest {
         assertThat(second.hasNext()).isTrue();
         assertThat(second.next()).isEqualTo(2);
         assertThat(second.hasNext()).isFalse();
+    }
+
+    @Test
+    void whenGetIteratorFromEmptyListThenNextThrowException() {
+        Iterator<Integer> iterator = list.iterator();
+        assertThat(iterator.next()).isEqualTo(1);
+        assertThat(iterator.next()).isEqualTo(2);
+        assertThatThrownBy(iterator::next).isInstanceOf(NoSuchElementException.class);
+    }
+
+    @Test
+    void whenGetIteratorConcurrentModificationException() {
+        Iterator<Integer> iterator = list.iterator();
+        assertThat(iterator.hasNext()).isTrue();
+        list.add(3);
+        assertThatThrownBy(iterator::next).isInstanceOf(ConcurrentModificationException.class);
+    }
+
+    @Test
+    void whenAddNullAndGet() {
+        list.add(null);
+        assertThat(list.get(2)).isNull();
     }
 }
