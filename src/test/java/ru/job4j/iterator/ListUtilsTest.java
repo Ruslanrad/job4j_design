@@ -41,54 +41,54 @@ class ListUtilsTest {
     }
 
     @Test
-    void whenAddAfterLastIndex () {
+    void whenAddAfterLastIndex() {
         ListUtils.addAfter(input, 1, 4);
         assertThat(input).hasSize(3).containsSequence(1, 3, 4);
     }
 
     @Test
-    void whenAddAfterFirstIndex () {
+    void whenAddAfterFirstIndex() {
         ListUtils.addAfter(input, 0, 2);
         assertThat(input).hasSize(3).containsSequence(1, 2, 3);
     }
 
     @Test
-    void whenRemoveIfPredicateMoreOne () {
+    void whenRemoveIfPredicateMoreOne() {
         Predicate<Integer> filter = i -> i > 1;
         ListUtils.removeIf(input, filter);
         assertThat(input).hasSize(1).containsSequence(1);
     }
 
     @Test
-    void whenRemoveIfPredicateLessThree () {
+    void whenRemoveIfPredicateLessThree() {
         Predicate<Integer> filter = i -> i < 3;
         ListUtils.removeIf(input, filter);
         assertThat(input).hasSize(1).containsSequence(3);
     }
 
     @Test
-    void whenReplaceIfPredicateLessThree () {
+    void whenReplaceIfPredicateLessThree() {
         Predicate<Integer> filter = i -> i < 3;
         ListUtils.replaceIf(input, filter, 5);
         assertThat(input).hasSize(2).containsSequence(5, 3);
     }
 
     @Test
-    void whenReplaceIfPredicateMoreOne () {
+    void whenReplaceIfPredicateMoreOne() {
         Predicate<Integer> filter = i -> i > 1;
         ListUtils.replaceIf(input, filter, 5);
         assertThat(input).hasSize(2).containsSequence(1, 5);
     }
 
     @Test
-    void  whenRemoveAllListOneThoThree () {
+    void  whenRemoveAllListOneThoThree() {
         List<Integer> remove = new ArrayList<>(Arrays.asList(1, 2, 3));
         ListUtils.removeAll(input, remove);
         assertThat(input).isEmpty();
     }
 
     @Test
-    void  whenRemoveAllListThoThree () {
+    void  whenRemoveAllListThoThree() {
         List<Integer> remove = new ArrayList<>(Arrays.asList(2, 3));
         ListUtils.removeAll(input, remove);
         assertThat(input).hasSize(1).containsSequence(1);
