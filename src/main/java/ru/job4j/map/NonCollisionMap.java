@@ -39,7 +39,8 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
 
     @Override
     public boolean remove(K key) {
-        boolean result = table[hash(Objects.hashCode(key))] != null;
+        int i = indexForKey(key);
+        boolean result = table[i] != null && Objects.equals(table[i].key, key);
         if (result) {
             table[indexForKey(key)] = null;
             count--;
