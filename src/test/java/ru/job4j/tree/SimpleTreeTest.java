@@ -57,4 +57,27 @@ public class SimpleTreeTest {
         Tree<Integer> tree = new SimpleTree<>(2);
         assertThat(tree.add(null, 1)).isFalse();
     }
+
+    @Test
+    void whenRoot2AddParentNullIsFalse111() {
+        Tree<Integer> tree = new SimpleTree<>(1);
+        tree.add(1, 2);
+        tree.add(1, 3);
+        tree.add(2, 4);
+        tree.add(2, 5);
+        assertThat(tree.isBinary()).isTrue();
+
+    }
+
+    @Test
+    void whenRoot2AddParentNullIsFalse1112() {
+        Tree<Integer> tree = new SimpleTree<>(1);
+        tree.add(1, 2);
+        tree.add(1, 3);
+        tree.add(2, 4);
+        tree.add(2, 5);
+        tree.add(2, 6);
+        assertThat(tree.isBinary()).isFalse();
+
+    }
 }
