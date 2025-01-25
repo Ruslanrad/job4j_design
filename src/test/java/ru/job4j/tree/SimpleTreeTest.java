@@ -59,7 +59,7 @@ public class SimpleTreeTest {
     }
 
     @Test
-    void whenRoot2AddParentNullIsFalse111() {
+    void whenRootIsBinaryIsTrue() {
         Tree<Integer> tree = new SimpleTree<>(1);
         tree.add(1, 2);
         tree.add(1, 3);
@@ -70,7 +70,7 @@ public class SimpleTreeTest {
     }
 
     @Test
-    void whenRoot2AddParentNullIsFalse1112() {
+    void whenRootIsBinaryIsFalse() {
         Tree<Integer> tree = new SimpleTree<>(1);
         tree.add(1, 2);
         tree.add(1, 3);
