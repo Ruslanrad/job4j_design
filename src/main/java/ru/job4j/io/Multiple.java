@@ -28,6 +28,4 @@ public class Multiple {
             e.printStackTrace();
         }
     }
-
-
 }
