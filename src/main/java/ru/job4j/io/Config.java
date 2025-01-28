@@ -36,7 +36,7 @@ public class Config {
             Matcher nonKeyMatcher = patternNonKey.matcher(line);
             Matcher nonValueMatcher = patternNonValue.matcher(line);
             Matcher matcher = pattern.matcher(line);
-            if (line.equals("=")
+            if ("=".equals(line)
                     || (!line.contains("=") && !commentMatcher.find() && !line.isEmpty())
                     || nonKeyMatcher.find()
                     || nonValueMatcher.find()) {
