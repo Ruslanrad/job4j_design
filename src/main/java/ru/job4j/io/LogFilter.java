@@ -3,6 +3,7 @@ package ru.job4j.io;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class LogFilter {
     private final String file;
@@ -14,7 +15,8 @@ public class LogFilter {
     public List<String> filter() {
         List<String> strings = new ArrayList<String>();
         try (BufferedReader input = new BufferedReader(new FileReader(file))) {
-            input.lines().filter(file -> file.contains("404")).forEach(strings::add);
+            Pattern pattern = Pattern.compile(".+\\s404\\s.+$");
+            input.lines().filter(line -> pattern.matcher(line).matches()).forEach(strings::add);
         } catch (IOException e) {
             e.printStackTrace();
         }
