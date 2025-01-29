@@ -15,8 +15,13 @@ public class LogFilter {
     public List<String> filter() {
         List<String> strings = new ArrayList<String>();
         try (BufferedReader input = new BufferedReader(new FileReader(file))) {
-            Pattern pattern = Pattern.compile(".+\\s404\\s[0-9]+$");
-            input.lines().filter(line -> pattern.matcher(line).matches()).forEach(strings::add);
+            String line;
+            while ((line = input.readLine()) != null) {
+                String[] elements = line.split(" ");
+                if (elements[elements.length-2].equals("404")) {
+                    strings.add(line);
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
