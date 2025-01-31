@@ -83,9 +83,9 @@ class ConfigTest {
     }
 
     @Test
-    void whenNotKeyWithTempDir(@TempDir Path tempDir) throws IOException{
+    void whenNotKeyWithTempDir(@TempDir Path tempDir) throws IOException {
         File source = tempDir.resolve("source.txt").toFile();
-        try (PrintWriter output = new PrintWriter(source)){
+        try (PrintWriter output = new PrintWriter(source)) {
             output.println("=value");
         }
         IllegalArgumentException exception = assertThrows(
@@ -98,9 +98,9 @@ class ConfigTest {
     }
 
     @Test
-    void whenNotValueWithTempDir(@TempDir Path tempDir) throws IOException{
+    void whenNotValueWithTempDir(@TempDir Path tempDir) throws IOException {
         File source = tempDir.resolve("source.txt").toFile();
-        try (PrintWriter output = new PrintWriter(source)){
+        try (PrintWriter output = new PrintWriter(source)) {
             output.println("value=");
         }
         IllegalArgumentException exception = assertThrows(
@@ -116,7 +116,7 @@ class ConfigTest {
     @Test
     void whenNotKeyAndNotValueWithTempDir(@TempDir Path tempDir) throws IOException {
         File source = tempDir.resolve("source.txt").toFile();
-        try (PrintWriter output = new PrintWriter(source)){
+        try (PrintWriter output = new PrintWriter(source)) {
             output.println("=");
         }
         IllegalArgumentException exception = assertThrows(
@@ -130,7 +130,7 @@ class ConfigTest {
     }
 
     @Test
-    void whenPairWithCommentWitchTempDir(@TempDir Path tempDir) throws IOException {
+    void whenPairWithCommentWithTempDir(@TempDir Path tempDir) throws IOException {
         File source = tempDir.resolve("source.txt").toFile();
         try (PrintWriter output = new PrintWriter(source)) {
             output.println("#Comment");
