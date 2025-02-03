@@ -28,7 +28,7 @@ public class Search {
             throw new IllegalArgumentException("Wrong is directory.");
         }
         if (!".js".equals(arguments[1])) {
-            throw new IllegalArgumentException("Wrong file extension.1");
+            throw new IllegalArgumentException("Wrong file extension.");
         }
     }
 }
