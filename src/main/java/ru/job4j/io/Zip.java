@@ -3,7 +3,6 @@ package ru.job4j.io;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
@@ -68,9 +67,7 @@ public class Zip {
         String exclude = arguments[1];
         String output = arguments[2];
         Path start = Paths.get(directory);
-        List<Path> sources = new ArrayList<>(Search.search(start, path -> true).stream().toList());
-        List<Path> excludePaths = Search.search(start, path -> path.toFile().getName().endsWith(exclude)).stream().toList();
-        sources.removeAll(excludePaths);
+        List<Path> sources = Search.search(start, path -> !path.toFile().getName().endsWith(exclude)).stream().toList();
         Zip zip = new Zip();
         zip.packFiles(sources, new File(output));
     }
