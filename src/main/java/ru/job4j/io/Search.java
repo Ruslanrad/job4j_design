@@ -24,5 +24,11 @@ public class Search {
         if (arguments.length != 2) {
             throw new IllegalArgumentException("Wrong number of arguments.");
         }
+        if (!".".equals(arguments[0])) {
+            throw new IllegalArgumentException ("Wrong is directory.");
+        }
+        if (!".js".equals(arguments[1])) {
+            throw new IllegalArgumentException ("Wrong file extension.");
+        }
     }
 }
