@@ -17,9 +17,8 @@ public class CSVReader {
             throw new RuntimeException("Invalid output format");
         }
 
-        var scanner = new Scanner(new FileInputStream(path));
         List<String> outputLines = new ArrayList<>();
-        try {
+        try (var scanner = new Scanner(new FileInputStream(path))) {
             StringJoiner lineHeaders = new StringJoiner(delimiter);
             List<Integer> indexColumns = new ArrayList<>();
             String[] header = scanner.nextLine().split(delimiter);
@@ -41,7 +40,7 @@ public class CSVReader {
                 }
                 outputLines.add(lineOther.toString());
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -50,8 +49,9 @@ public class CSVReader {
                 System.out.println(line);
             }
         }
+
         if (out.endsWith(".csv")) {
-            try (PrintWriter output = new PrintWriter(new BufferedOutputStream(new FileOutputStream(path)))) {
+            try (PrintWriter output = new PrintWriter(new BufferedOutputStream(new FileOutputStream(out)))) {
                 outputLines.forEach(output::println);
             } catch (IOException e) {
                 e.printStackTrace();
