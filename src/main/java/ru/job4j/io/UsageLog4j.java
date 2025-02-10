@@ -18,7 +18,6 @@ public class UsageLog4j {
         boolean bool = true;
         char c = 'c';
 
-
         LOG.debug("User info name : {}, age : {}, byte : {}, short : {}, long : {}, float : {}, double : {}, boolean : {}, char : {}",
                 name, age, b, s, l, f, d, bool, c);
     }
