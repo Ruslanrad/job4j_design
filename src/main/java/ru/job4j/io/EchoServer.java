@@ -15,11 +15,11 @@ public class EchoServer {
                     output.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
                     String message = "What";
                     String line = input.readLine();
-                    if (line.contains("Exit")) {
+                    if (line.contains("msg=Exit")) {
                         server.close();
                         return;
                     }
-                    if (line.contains("Hello")) {
+                    if (line.contains("msg=Hello")) {
                         message = "Hello";
                     }
                     output.write(message.getBytes());
