@@ -1,0 +1,9 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<user1 name="John" surname="Smith" age="19" worker="true">
+    <account id="1" balance="5000">
+    </account>
+    <characteristickes>
+        <characteristick>kind</characteristick>
+        <characteristick>cute</characteristick>
+    </characteristickes>
+</user1>
