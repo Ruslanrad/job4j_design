@@ -69,3 +69,5 @@ fetch last from cursor_products;
 fetch absolute 7 from cursor_products;
 fetch absolute 2 from cursor_products;
 fetch first from cursor_products;
+close cursor_products;
+commit;
